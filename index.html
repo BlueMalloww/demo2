@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="css/bootstrap(1).css">
+    <script src="https://code.jquery.com/jquery-3.6.3.js"></script>
+    <title>Bootstrap Example 1</title>
+    <script>
+        function allowDrop(ev1) {
+            //console.log({ev1});
+            ev1.preventDefault();
+        }
+
+        function drag(ev2) {
+            //console.log({ev2});
+            ev2.dataTransfer.setData("text", ev2.target.id);
+        }
+
+        function drop(ev3) {
+            if (!ev3.srcElement.attributes["attr-obj"]) {
+                ev3.preventDefault();
+                var data = ev3.dataTransfer.getData("text");
+                ev3.target.appendChild(document.getElementById(data));
+            }
+            console.log({
+                ev3: ev3.srcElement.attributes["attr-obj"]
+            });
+
+        }
+    </script>
+
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-4" style=" border-style: dashed; height:500px;" id="div1" ondrop="drop(event)"
+                ondragover="allowDrop(event)">
+                <div id="drag1" attr-obj="drag" draggable="true" ondragstart="drag(event)"
+                    style="background-color:red; width:450px; height:450px;">
+                    <div draggable="true" ondragstart="drag(event)"
+                        style="background-color:pink; width:100px; height:45px;"></div>
+                </div>
+            </div>
+            <div class="col-sm-4" style=" border-style: dashed; height:500px;" id="div2" ondrop="drop(event)"
+                ondragover="allowDrop(event)">
+                <div id="drag2" attr-obj="drag" draggable="true" ondragstart="drag(event)"
+                    style="background-color:blue; width:450px; height:450px;"></div>
+            </div>
+            <div class="col-sm-4" style=" border-style: dashed; height:500px;" id="div3" ondrop="drop(event)"
+                ondragover="allowDrop(event)">
+                <div id="drag3" attr-obj="drag" draggable="true" ondragstart="drag(event)"
+                    style="background-color:yellow; width:450px; height:450px;"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4" style=" border-style: dashed; height:500px;" id="div4" ondrop="drop(event)"
+                ondragover="allowDrop(event)">
+                <div></div>
+            </div>
+            <div class="col-sm-4" style=" border-style: dashed; height:500px;" id="div5" ondrop="drop(event)"
+                ondragover="allowDrop(event)">
+                <div></div>
+            </div>
+            <div class="col-sm-4" style=" border-style: dashed; height:500px;" id="div6" ondrop="drop(event)"
+                ondragover="allowDrop(event)">
+                <div></div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
